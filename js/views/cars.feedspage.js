@@ -3,77 +3,66 @@
  */
 
 'use strict';
+import { Image } from 'react-bootstrap'
+import DefaultImg from '../../image/test.png'
 
-import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
-
-
-class MainPage extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            status: ""
-        };
-    }
-
-    handleUpdateState(state) {
-        this.setState({
-            status:state
-        })
-    }
-
-    getOwnerPage() {
-        return <div>Owner</div>
-    }
-
-    getOperatorPage() {
-        return (
-            <div>Operator</div>
-        )
-    }
-
-    getWelcomePage() {
-        return (
-            <Grid>
-                <Row>
-                    <Col xs={12} md={6}>
-                        <div className="container-box operator">
-                            <a onClick={this.handleUpdateState.bind(this,"operator")}>我是技师</a>
-                        </div>
-                    </Col>
-                    <Col xs={12} md={6}>
-                        <div className="container-box owner">
-                            <a onClick={this.handleUpdateState.bind(this,"owner")}>我是车主</a>
-                        </div>
-                    </Col>
-                </Row>
-            </Grid>
-        )
-    }
-
-    getCurrentPage() {
-        switch (this.state.status) {
-            case "operator":
-                return this.getOperatorPage();
-                break;
-            case "owner":
-                return this.getOwnerPage();
-                break;
-            default:
-                return this.getWelcomePage();
-                break;
-        }
-    }
-
+class FeedComponent extends React.Component {
     render() {
-        let page = this.getCurrentPage();
         return (
             <div>
-                {page}
+                <div>
+                    <Image src={DefaultImg} responsive />
+                </div>
+                <p>{this.props.item.operator}</p>
+
+                <p>{this.props.item.rate}</p>
+                <p>{this.props.item.domain}</p>
             </div>
         )
     }
 }
 
-export default MainPage;
+class FeedsPage extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            feeds: []
+        };
+    }
+
+    componentDidMount() {
+        let mockup = [
+            {
+                operator: "Shawn",
+                rate: 5,
+                domain: "cars,test"
+            },
+            {
+                operator: "Abby",
+                rate:4,
+                domain: "cars,tet,test"
+            }
+        ];
+        this.setState({
+            feeds:mockup
+        })
+    }
+
+    getFeeds() {
+        return _.map(this.state.feeds,function(item){
+            return <FeedComponent item={item}/>
+        })
+    }
+
+    render() {
+        let feeds = this.getFeeds();
+        return (
+            <div>
+                {feeds}
+            </div>
+        )
+    }
+}
+
+export default FeedsPage;
 
