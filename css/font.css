@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'carscommon';
+    src:url('../fonts/carscommon.eot?ru5iiz');
+    src:url('../fonts/carscommon.eot?ru5iiz#iefix') format('embedded-opentype'),
+    url('../fonts/carscommon.ttf?ru5iiz') format('truetype'),
+    url('../fonts/carscommon.woff?ru5iiz') format('woff'),
+    url('../fonts/carscommon.svg?ru5iiz#carscommon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="cars-icon-"], [class*=" cars-icon-"] {
+    font-family: 'carscommon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.cars-icon-tools:before {
+    content: "\f031";
+}
