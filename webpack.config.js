@@ -1,12 +1,20 @@
-var webpack = require('webpack');
+var webpack = require('webpack'),
+    path                = require('path'),
+    srcPath             = path.join(__dirname, 'src');
 
 module.exports = {
-    entry: [
-        './js/app.js'
-    ],
+    entry: {
+        app: './js/app.js',
+        vendor: ['react', 'react-dom', 'react-router', 'jquery', 'jquery.cookie', 'react-bootstrap', 'bootstrap-webpack']
+    },
     output: {
         path: __dirname + '/build',
         filename: "bundle.js"
+    },
+    resolve: {
+        root: srcPath,
+        extensions: ['', '.js', 'jsx'],
+        modulesDirectories: ['node_modules', 'src']
     },
     module: {
         loaders: [
@@ -36,8 +44,10 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
         new webpack.ProvidePlugin({
             "$": "jquery",
+            jQuery: "jquery",
             "React": "react",
             "_": "underscore"
         })

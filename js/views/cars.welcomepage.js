@@ -5,7 +5,8 @@
 'use strict';
 
 import { Grid, Row, Col } from 'react-bootstrap';
-import FeedsPage from './cars.feedspage';
+import OperatorFeeds from './cars.ownerpage';
+import UserRequestFeeds from './cars.operatorpage';
 
 class MainPage extends React.Component {
     constructor() {
@@ -22,12 +23,12 @@ class MainPage extends React.Component {
     }
 
     getOwnerPage() {
-        return <div>Owner</div>
+        return <div><OperatorFeeds/></div>
     }
 
     getOperatorPage() {
         return (
-            <div><FeedsPage/></div>
+            <div><UserRequestFeeds/></div>
         )
     }
 
