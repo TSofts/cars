@@ -12,7 +12,7 @@ class FeedComponent extends React.Component {
     getRates() {
         var rates = [];
         for (var i = 0; i < 5; i++) {
-            var className = "cars-icon-tools";
+            var className = "cars-icon-tools left";
             if (i < this.props.item.level) {
                 className += " rate";
             }
@@ -22,10 +22,11 @@ class FeedComponent extends React.Component {
     }
 
     getCarDescription() {
-        var des = " "+Cars.get(this.props.item.car.brand) + " " + this.props.item.car.series + " " + this.props.item.car.displacement + " " + this.props.item.car.year;
+        var des = " " + Cars.get(this.props.item.car.brand) + " " + this.props.item.car.series + " " + this.props.item.car.displacement + " " + this.props.item.car.year;
         return (
             <span className="feed-title">
-                <Image className="feed-car-brand" src={require("../../image/cars/"+this.props.item.car.brand+".png")}/><a>{des}</a>
+                <Image className="feed-car-brand"
+                       src={require("../../image/cars/"+this.props.item.car.brand+".png")}/><a>{des}</a>
             </span>
         )
     }
@@ -54,7 +55,7 @@ class FeedComponent extends React.Component {
 
                         </div>
                     </div>
-                    <Button className="feed-button" bsStyle="default">接单</Button>
+                    <Button className="element-button" bsStyle="default">接单</Button>
                 </div>
                 <div className="feed-bottom">
                     <ul className="cross feed-rate">
@@ -119,6 +120,7 @@ class UserRequestFeedsPage extends React.Component {
         let feeds = this.getFeeds();
         return (
             <div className="feed-container">
+
                 {feeds}
             </div>
         )

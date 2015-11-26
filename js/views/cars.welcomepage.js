@@ -23,10 +23,12 @@ class MainPage extends React.Component {
     }
 
     getOwnerPage() {
+        $.cookie('type','owner');
         return <div><OperatorFeeds/></div>
     }
 
     getOperatorPage() {
+        $.cookie('type','operator');
         return (
             <div><UserRequestFeeds/></div>
         )
