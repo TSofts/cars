@@ -6,7 +6,6 @@ import Welcome from './views/cars.welcomepage'
 
 require('jquery.cookie');
 require("bootstrap-webpack");
-require("underscore");
 require("../css/override.css");
 require("../css/app.css");
 require("../css/static.css");

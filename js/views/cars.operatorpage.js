@@ -6,6 +6,7 @@
 import { Image,Button } from 'react-bootstrap'
 import DefaultImg from '../../image/test.png'
 import Cars from '../common/cars'
+import HeaderAction from '../action/cars.headeraction'
 
 class FeedComponent extends React.Component {
 
@@ -55,7 +56,7 @@ class FeedComponent extends React.Component {
 
                         </div>
                     </div>
-                    <Button className="element-button" bsStyle="default">接单</Button>
+                    <Button className="feed-button" bsStyle="default">接单</Button>
                 </div>
                 <div className="feed-bottom">
                     <ul className="cross feed-rate">
@@ -107,7 +108,9 @@ class UserRequestFeedsPage extends React.Component {
         ];
         this.setState({
             feeds: mockup
-        })
+        });
+
+        HeaderAction.updateUserType("operator");
     }
 
     getFeeds() {

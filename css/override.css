@@ -1,4 +1,7 @@
 .navbar {
-    border-radius: 0px;
+    border-radius: 0;
 }
 
+input.cars-input.form-control,button.cars-button.btn.btn-default {
+    border-radius: 0;
+}

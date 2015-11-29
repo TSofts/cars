@@ -1,6 +1,6 @@
 var webpack = require('webpack'),
-    path                = require('path'),
-    srcPath             = path.join(__dirname, 'src');
+    path = require('path'),
+    srcPath = path.join(__dirname, 'src');
 
 module.exports = {
     entry: {
@@ -46,10 +46,9 @@ module.exports = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
         new webpack.ProvidePlugin({
-            "$": "jquery",
-            jQuery: "jquery",
-            "React": "react",
-            "_": "underscore"
+            $: "jquery",
+            React: "react",
+            _: "underscore"
         })
     ]
 };

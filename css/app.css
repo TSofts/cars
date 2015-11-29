@@ -52,6 +52,7 @@ html body {
 .feed-top {
     width: 100%;
     height: 85%;
+    position: relative;
 }
 
 .feed-bottom {
@@ -217,6 +218,34 @@ html body {
 
 ul.element-rate > li {
     margin: 0 2px;
+}
+
+/*************************/
+
+/*******header************/
+.header-pic {
+    width: 70px;
+}
+
+.header-type {
+    width: 110px;
+}
+
+.header-type > .form-group {
+    margin-bottom: 0;
+}
+
+.header-loginform {
+    margin: 0 10px;
+
+}
+
+.header-loginform > button {
+    width: 100%;
+}
+
+.header-loginform > a {
+    font-size:12px;
 }
 
 /*************************/

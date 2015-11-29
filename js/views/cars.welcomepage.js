@@ -4,31 +4,25 @@
 
 'use strict';
 
-import { Grid, Row, Col } from 'react-bootstrap';
-import OperatorFeeds from './cars.ownerpage';
-import UserRequestFeeds from './cars.operatorpage';
+import { Grid, Row, Col } from 'react-bootstrap'
+import OperatorFeeds from './cars.ownerpage'
+import UserRequestFeeds from './cars.operatorpage'
+import HeaderAction from '../action/cars.headeraction'
+import MainStore from '../store/cars.mainstore'
+import MainAction from '../action/cars.mainaction'
+import AltContainer from 'alt/AltContainer'
 
-class MainPage extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            status: ""
-        };
-    }
+class Main extends React.Component {
 
     handleUpdateState(state) {
-        this.setState({
-            status:state
-        })
+        MainAction.updateCurrentTag(state);
     }
 
     getOwnerPage() {
-        $.cookie('type','owner');
         return <div><OperatorFeeds/></div>
     }
 
     getOperatorPage() {
-        $.cookie('type','operator');
         return (
             <div><UserRequestFeeds/></div>
         )
@@ -54,7 +48,7 @@ class MainPage extends React.Component {
     }
 
     getCurrentPage() {
-        switch (this.state.status) {
+        switch (this.props.currentTag) {
             case "operator":
                 return this.getOperatorPage();
                 break;
@@ -73,6 +67,16 @@ class MainPage extends React.Component {
             <div>
                 {page}
             </div>
+        )
+    }
+}
+
+class MainPage extends React.Component {
+    render() {
+        return (
+            <AltContainer store={MainStore}>
+                <Main/>
+            </AltContainer>
         )
     }
 }

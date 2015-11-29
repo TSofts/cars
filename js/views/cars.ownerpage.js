@@ -5,7 +5,7 @@
 'use strict';
 import { Image,Button } from 'react-bootstrap'
 import DefaultImg from '../../image/2.jpg'
-
+import HeaderAction from '../action/cars.headeraction'
 
 class ElementComponent extends React.Component {
 
@@ -104,7 +104,8 @@ class OperatorFeedsPage extends React.Component {
         ];
         this.setState({
             feeds: mockup
-        })
+        });
+        HeaderAction.updateUserType("owner");
     }
 
     getFeeds() {
