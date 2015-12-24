@@ -6,15 +6,12 @@ var LoginSource = {
         return {
             remote(store,usr){
                 return new Promise(function(resolve,reject){
-                    console.debug(usr);
                     // Completed of async action, set loading state back
                     if((usr.username=="test")&&(usr.password='123')){
-                        console.debug("123")
                         resolve(usr);
 
                     }
                     else {
-                        console.debug("321")
                         reject("登录失败");
                     }
 

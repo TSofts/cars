@@ -1,9 +1,7 @@
+
+
 li {
     list-style-type: none
-}
-
-ul.cross > li.left {
-    float: left
 }
 
 a:hover {
@@ -12,10 +10,4 @@ a:hover {
 
 p {
     margin: 0;
-}
-
-.navbar>.container {
-    margin: 0;
-    padding:0;
-    width:100%;
 }

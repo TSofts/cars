@@ -81,7 +81,11 @@ class UserInfo extends React.Component {
     getDropDownPanel() {
         if (this.props.isLogged) {
             return (
-                <div>{this.props.user.username}</div>
+                <ul>
+                    <li><Link to="/userinfo">用户信息</Link></li>
+                    <li>我的预约</li>
+                    <li>退出登录</li>
+                </ul>
             )
         }
         else {
@@ -94,7 +98,7 @@ class UserInfo extends React.Component {
     render() {
         let dropDown = this.getDropDownPanel();
         return (
-            <NavDropdown eventKey={3} title="" id="basic-nav-dropdown">
+            <NavDropdown eventKey={3} title={this.props.user.username} id="basic-nav-dropdown">
                 {dropDown}
             </NavDropdown>
         )
@@ -126,7 +130,7 @@ class TopNav extends React.Component {
             <Navbar inverse>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        Cars
+                        人来车往
                     </Navbar.Brand>
 
                 </Navbar.Header>

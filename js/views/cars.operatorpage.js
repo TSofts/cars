@@ -59,9 +59,6 @@ class FeedComponent extends React.Component {
                     <Button className="feed-button" bsStyle="default">接单</Button>
                 </div>
                 <div className="feed-bottom">
-                    <ul className="cross feed-rate">
-                        {rates}
-                    </ul>
 
                 </div>
 
