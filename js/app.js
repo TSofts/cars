@@ -5,7 +5,6 @@ import Footer from './views/cars.footerpage'
 import Welcome from './views/cars.welcomepage'
 
 require('jquery.cookie');
-require("bootstrap-webpack");
 require("../css/override.css");
 require("../css/app.css");
 require("../css/static.css");
