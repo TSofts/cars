@@ -3,6 +3,7 @@
  */
 
 'use strict';
+import { Router, Route, Link, Redirect, IndexRoute } from 'react-router'
 import { Image,Button,Grid } from 'react-bootstrap'
 
 
@@ -21,12 +22,12 @@ class UserPanelPage extends React.Component {
                 <div className="user-menu">
                     用户中心
                     <ul>
-                        <li>test</li>
+                        <li><Link to="/test">test</Link></li>
                         <li>test11</li>
                     </ul>
                 </div>
                 <div className="user-container">
-                    test11
+                    {this.props.children}
                 </div>
             </div>
         )

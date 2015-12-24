@@ -34,7 +34,11 @@ render((
     <Router>
         <Route path="/" component={App}>
             <IndexRoute component={Welcome}/>
-            <Route path="/userinfo" component={UserPanel}/>
+            <Route path="/userinfo" component={UserPanel}>
+                <Route path="/test" component={Footer}/>
+                <IndexRoute component={Welcome}/>
+            </Route>
+
         </Route>
 
     </Router>
