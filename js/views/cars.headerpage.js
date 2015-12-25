@@ -78,30 +78,25 @@ class LoginPanel extends React.Component {
 }
 
 class UserInfo extends React.Component {
-    getDropDownPanel() {
+
+    render() {
         if (this.props.isLogged) {
             return (
-                <ul>
-                    <li><Link to="/userinfo">用户信息</Link></li>
-                    <li>我的预约</li>
-                    <li>退出登录</li>
-                </ul>
+                <NavDropdown eventKey={3} title={this.props.user.username} id="basic-nav-dropdown">
+                    <MenuItem eventKey={3.1}><Link to="/usercenter">会员中心</Link></MenuItem>
+                    <MenuItem eventKey={3.2}><Link to="/security">账户安全</Link></MenuItem>
+                    <MenuItem divider />
+                    <MenuItem eventKey={3.3}>注销登录</MenuItem>
+                </NavDropdown>
             )
         }
         else {
             return (
-                <LoginPanel/>
+                <NavDropdown eventKey={3} title={this.props.user.username} id="basic-nav-dropdown">
+                    <LoginPanel/>
+                </NavDropdown>
             )
         }
-    }
-
-    render() {
-        let dropDown = this.getDropDownPanel();
-        return (
-            <NavDropdown eventKey={3} title={this.props.user.username} id="basic-nav-dropdown">
-                {dropDown}
-            </NavDropdown>
-        )
     }
 }
 

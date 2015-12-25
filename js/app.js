@@ -3,7 +3,8 @@ import { Router, Route, Link, Redirect, IndexRoute } from 'react-router'
 import Header from './views/cars.headerpage'
 import Footer from './views/cars.footerpage'
 import Welcome from './views/cars.welcomepage'
-import UserPanel from './views/cars.userpanelpage.js'
+import UserCenter from './views/usercenter/cars.usercenterpage'
+import UserPanelPage from './views/usercenter/cars.accountpage'
 
 require('jquery.cookie');
 require("bootstrap-webpack");
@@ -34,12 +35,12 @@ render((
     <Router>
         <Route path="/" component={App}>
             <IndexRoute component={Welcome}/>
-            <Route path="/userinfo" component={UserPanel}>
+            <Route path="/usercenter" component={UserCenter}>
                 <Route path="/test" component={Footer}/>
-                <IndexRoute component={Welcome}/>
+                <IndexRoute component={UserPanelPage}/>
             </Route>
 
         </Route>
 
     </Router>
-), document.body);
+), document.getElementById('content'));
