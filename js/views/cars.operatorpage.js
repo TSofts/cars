@@ -78,6 +78,7 @@ class UserRequestFeedsPage extends React.Component {
     componentDidMount() {
         let mockup = [
             {
+                id:1,
                 user: "Shawn",
                 level: 5,
                 requestType: "保养",
@@ -91,6 +92,7 @@ class UserRequestFeedsPage extends React.Component {
                 summary: "I wan to asdfasdf..."
             },
             {
+                id:2,
                 user: "Abby",
                 level: 5,
                 requestType: "保养",
@@ -112,7 +114,7 @@ class UserRequestFeedsPage extends React.Component {
 
     getFeeds() {
         return _.map(this.state.feeds, function (item) {
-            return <FeedComponent item={item}/>
+            return <FeedComponent key={item.id} item={item}/>
         })
     }
 

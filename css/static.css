@@ -1,4 +1,8 @@
-
+html body {
+    overflow-x: hidden;
+    height:100%;
+    width:100%;
+}
 
 li {
     list-style-type: none
@@ -10,4 +14,8 @@ a:hover {
 
 p {
     margin: 0;
+}
+
+span.x-large {
+    font-size:x-large;
 }

@@ -1,5 +1,21 @@
-html body {
-    height: 100%;
+html,body {
+    overflow-x: hidden;
+    height:100%;
+    width:100%;
+    background-color: #f2f2f2;
+}
+
+#content {
+    width: 100%;
+    height:100%;
+    background-image: url("../image/background.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+#body {
+    margin: 10px auto;
 }
 
 .container-box {
@@ -8,33 +24,68 @@ html body {
 }
 
 .operator {
-    background-color: #00b3ee;
+
+    background-image: url("../image/operator.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position:relative;
+    height: 400px;
+    width:100%;
+}
+
+.btn-operator {
+    background-image: url("../image/btn-operator.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 50px;
+    height: 25px;
+    position: absolute;
+    top: 210px;
+    left: 345px;
 }
 
 .owner {
-    background-color: #880000;
+    background-image: url("../image/owner.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position:relative;
+    height: 400px;
+    width:100%;
+}
+
+.btn-owner {
+    background-image: url("../image/btn-owner.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 50px;
+    height: 25px;
+    position: absolute;
+    top: 210px;
+    left: 295px;
 }
 
 .container-body {
     height: 70%;
 }
 
-.footer {
+#footer {
     margin-top: 15px;
-    text-align: center
+    text-align: center;
+    background-color: rgba(255,255,255,0.4);
+    height: 80px;
 }
 
-.footer > ul {
+ul.footer-menu {
     display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 10px auto;
 }
 
-.footer > ul > .lastli {
-    border: none;
-}
 
-.footer > ul > li {
+ul.footer-menu > li {
     float: left;
     padding-right: 10px;
     padding-left: 10px;
@@ -220,6 +271,10 @@ ul.element-rate > li {
     margin: 0 2px;
 }
 
+ul.cross > li {
+    float: left;
+}
+
 /*************************/
 
 /*******header************/
@@ -245,13 +300,66 @@ ul.element-rate > li {
 }
 
 .header-loginform > a {
-    font-size:12px;
+    font-size: 12px;
+}
+
+.header-menu {
+    padding: 0;
+}
+
+.header-menu > li.menu-ele {
+    padding: 2px 0;
+    text-align: center;
+}
+
+li.menu-ele:hover {
+    background-color: #dddddd;
+    cursor: pointer;
 }
 
 /*************************/
 
+/*********Footer***********/
+.container-foot > p {
+    margin-left: 70px;
+
+}
+
+.footer-menu {
+    margin-left: 30px;
+}
+
+.footer-menu > li {
+    float: left;
+    border-right: solid 1px;
+
+}
+
+.footer-menu > li:last-child {
+    border-right: none;
+}
+
+/**************************/
 /********User Center*******/
 .user-menu {
-    float:left;
+    float: left;
 }
+.account {
+    margin: 10px auto;
+    width: 70%;
+    background-color: #ddd;
+    padding: 10px;
+}
+.account-title {
+
+    height: 100px;
+
+
+
+}
+
+.account-title>span.username{
+    font-size: x-large;
+}
+
 /**************************/

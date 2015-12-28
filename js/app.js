@@ -7,7 +7,7 @@ import UserCenter from './views/usercenter/cars.usercenterpage'
 import UserPanelPage from './views/usercenter/cars.accountpage'
 
 require('jquery.cookie');
-require("bootstrap-webpack");
+//require("bootstrap-webpack");
 require("../css/override.css");
 require("../css/static.css");
 require("../css/app.css");
@@ -16,7 +16,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="cars-container">
                 <div id="header">
                     <Header/>
                 </div>

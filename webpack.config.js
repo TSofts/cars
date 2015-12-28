@@ -8,7 +8,7 @@ var webpack = require('webpack'),
 module.exports = {
     entry: {
         app: './js/app.js',
-        vendor: ['react', 'react-dom', 'react-router', 'jquery', 'jquery.cookie', 'react-bootstrap', 'bootstrap-webpack']
+        vendor: ['react', 'react-dom', 'react-router', 'jquery', 'jquery.cookie', 'react-bootstrap']
     },
     output: {
         path: __dirname + '/build',
