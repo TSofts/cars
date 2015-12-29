@@ -6,3 +6,11 @@
 input.cars-input.form-control,button.cars-button.btn.btn-default {
     border-radius: 0;
 }
+
+.form-control {
+    border-radius: 0;
+}
+
+.btn {
+    border-radius: 0;
+}

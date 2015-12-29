@@ -4,13 +4,15 @@ import Header from './views/cars.headerpage'
 import Footer from './views/cars.footerpage'
 import Welcome from './views/cars.welcomepage'
 import UserCenter from './views/usercenter/cars.usercenterpage'
-import UserPanelPage from './views/usercenter/cars.accountpage'
+import UserPanelPage from './views/usercenter/cars.ucindex'
+import Register from './views/accountmanage/cars.registerpage'
 
 require('jquery.cookie');
-//require("bootstrap-webpack");
+require("bootstrap-webpack");
 require("../css/override.css");
 require("../css/static.css");
 require("../css/app.css");
+require("../css/accountmanage.css");
 
 class App extends React.Component {
 
@@ -39,7 +41,7 @@ render((
                 <Route path="/test" component={Footer}/>
                 <IndexRoute component={UserPanelPage}/>
             </Route>
-
+            <Route path="/register" component={Register}/>
         </Route>
 
     </Router>

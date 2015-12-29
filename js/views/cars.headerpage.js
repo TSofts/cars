@@ -6,10 +6,11 @@
 
 import { Router, Route, Link, Redirect }  from 'react-router'
 import { Navbar, Nav, NavItem, Label,Input,Button,Glyphicon,Image,NavDropdown,MenuItem } from 'react-bootstrap'
-
 import AltContainer from 'alt/AltContainer'
+
 import HeaderStore from '../store/cars.headerstore'
 import LoginStore from '../store/cars.loginstore'
+
 import LoginAction from '../action/cars.loginaction'
 import MainAction from '../action/cars.mainaction'
 import HeaderAction from '../action/cars.headeraction'
@@ -72,7 +73,7 @@ class LoginPanel extends React.Component {
                 <Input className="cars-input" ref="username" type="text" placeholder="注册邮箱/用户名"/>
                 <Input className="cars-input" ref="password" type="password" placeholder="登陆密码"/>
                 <MenuItem divider />
-                <a style={{"float":"left"}}>忘记密码</a><a style={{"float":"right"}}>免费注册</a>
+                <a style={{"float":"left"}}>忘记密码</a><Link to="/register" style={{"float":"right"}}>免费注册</Link>
                 <Button className="cars-button" onClick={this.handleLoginProceed.bind(this)}>{(LoginStore.isLoading()==true)?"登录中...":"登陆"}</Button>
             </form>
         )

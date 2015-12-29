@@ -52,7 +52,7 @@ class UserPanelPage extends React.Component {
         return (
             <div className="account-panel">
                 <div className="account-nav">
-                    首页 > 会员中心
+                    <Link to="/">首页</Link> > 会员中心
                 </div>
                 <div className="account account-title">
                     <span className="x-large">用户1101</span> 欢迎来到人来车往

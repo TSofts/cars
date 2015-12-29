@@ -1,17 +1,18 @@
 /**
  * Created by Shawn on 15/11/19.
  */
-
 'use strict';
 
 import { Grid, Row, Col, Image,Button } from 'react-bootstrap'
+import AltContainer from 'alt/AltContainer'
+
+import MainStore from '../store/cars.mainstore'
+
+import HeaderAction from '../action/cars.headeraction'
+import MainAction from '../action/cars.mainaction'
+
 import OperatorFeeds from './cars.ownerpage'
 import UserRequestFeeds from './cars.operatorpage'
-import HeaderAction from '../action/cars.headeraction'
-import MainStore from '../store/cars.mainstore'
-import MainAction from '../action/cars.mainaction'
-import AltContainer from 'alt/AltContainer'
-import Register from '../views/cars.registerpage'
 
 class Main extends React.Component {
 
@@ -58,7 +59,7 @@ class Main extends React.Component {
                 return this.getOwnerPage();
                 break;
             default:
-                return <Register/>;
+                return this.getWelcomePage();
                 break;
         }
     }

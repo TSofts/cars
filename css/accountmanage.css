@@ -1,0 +1,38 @@
+.account-registry {
+    margin: 0 auto;
+}
+
+.registry {
+    background-color: #dddddd;
+}
+
+.registry > ul > li {
+    padding: 10px 5px;
+    height: 60px;
+}
+
+.registry > ul > li.button {
+    margin: 0 15px;
+}
+
+.registry > ul > li > .errorMsg {
+    margin: 2px 120px;
+    color: red;
+}
+
+.login {
+    background-color: #dddddd;
+}
+.login > ul > li {
+    padding: 15px 5px;
+    height: 70px;
+}
+
+.login > ul > li.button {
+    margin: 0 15px;
+}
+
+.login > ul > li > .errorMsg {
+    margin: 2px 120px;
+    color: red;
+}
