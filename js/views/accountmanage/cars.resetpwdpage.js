@@ -2,10 +2,10 @@
  * Created by Shawn on 15/11/19.
  */
 'use strict';
-import {Input,ButtonInput,Grid,Row,Col,Fade,Well} from 'react-bootstrap'
+import {Input,ButtonInput,Grid,Row,Col,Fade,Well,Label} from 'react-bootstrap'
 
 
-class Register extends React.Component {
+class ResetPassword extends React.Component {
 
     constructor() {
         super();
@@ -83,7 +83,6 @@ class Register extends React.Component {
     }
 
     validationPassword(password) {
-        var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (_.isEmpty(password)) {
             this.setState({
                 password: "error",
@@ -164,7 +163,7 @@ class Register extends React.Component {
             <Grid>
                 <Row>
                     <Col md={6} xs={12}>
-                        <form className="registry">
+                        <form className="reset-email">
                             <ul>
                                 <li>
                                     <Input id="email" type="email" bsStyle={this.state.email} label="注册邮箱"
@@ -173,22 +172,6 @@ class Register extends React.Component {
 
                                     <div className="errorMsg" style={{"display":this.state.openEmail}}>
                                         {this.state.errorEmail}
-                                    </div>
-                                </li>
-                                <li><Input id="mobile" type="text" bsStyle={this.state.mobile} label="注册手机"
-                                           placeholder="请输入注册手机"
-                                           labelClassName="col-xs-4 col-md-2" wrapperClassName="col-xs-8 col-md-10"/>
-
-                                    <div className="errorMsg" style={{"display":this.state.openMobile}}>
-                                        {this.state.errorMobile}
-                                    </div>
-                                </li>
-                                <li><Input id="password" type="password" bsStyle={this.state.password} label="密码"
-                                           placeholder="请输入密码" labelClassName="col-xs-4 col-md-2"
-                                           wrapperClassName="col-xs-8 col-md-10"/>
-
-                                    <div className="errorMsg" style={{"display":this.state.openPassword}}>
-                                        {this.state.errorPassword}
                                     </div>
                                 </li>
                                 <li><Input id="confirmpwd" type="password" bsStyle={this.state.confirmpwd} label="确认密码"
@@ -199,7 +182,7 @@ class Register extends React.Component {
                                         {this.state.errorConfirmpwd}
                                     </div>
                                 </li>
-                                <li className="button"><ButtonInput onClick={this.handleSubmit.bind(this)} value="免费注册"
+                                <li className="button"><ButtonInput onClick={this.handleSubmit.bind(this)} value="重设密码"
                                                                     block
                                                                     wrapperClassName="col-xs-offset-4 col-xs-offset-2"/>
                                 </li>
@@ -207,31 +190,14 @@ class Register extends React.Component {
                         </form>
                     </Col>
                     <Col md={6} xs={12}>
-                        <form className="registry">
+                        <form className="reset-mobile">
                             <ul>
-                                <li>
-                                    <Input id="email" type="email" bsStyle={this.state.email} label="注册邮箱"
-                                           placeholder="请输入注册邮箱"
-                                           labelClassName="col-xs-4 col-md-2" wrapperClassName="col-xs-8 col-md-10"/>
-
-                                    <div className="errorMsg" style={{"display":this.state.openEmail}}>
-                                        {this.state.errorEmail}
-                                    </div>
-                                </li>
                                 <li><Input id="mobile" type="text" bsStyle={this.state.mobile} label="注册手机"
                                            placeholder="请输入注册手机"
                                            labelClassName="col-xs-4 col-md-2" wrapperClassName="col-xs-8 col-md-10"/>
 
                                     <div className="errorMsg" style={{"display":this.state.openMobile}}>
                                         {this.state.errorMobile}
-                                    </div>
-                                </li>
-                                <li><Input id="password" type="password" bsStyle={this.state.password} label="密码"
-                                           placeholder="请输入密码" labelClassName="col-xs-4 col-md-2"
-                                           wrapperClassName="col-xs-8 col-md-10"/>
-
-                                    <div className="errorMsg" style={{"display":this.state.openPassword}}>
-                                        {this.state.errorPassword}
                                     </div>
                                 </li>
                                 <li><Input id="confirmpwd" type="password" bsStyle={this.state.confirmpwd} label="确认密码"
@@ -242,7 +208,7 @@ class Register extends React.Component {
                                         <Label bsStyle="info">{this.state.errorConfirmpwd}</Label>
                                     </div>
                                 </li>
-                                <li className="button"><ButtonInput onClick={this.handleSubmit.bind(this)} value="免费注册"
+                                <li className="button"><ButtonInput onClick={this.handleSubmit.bind(this)} value="重设密码"
                                                                     block
                                                                     wrapperClassName="col-xs-offset-4 col-xs-offset-2"/>
                                 </li>
@@ -256,5 +222,5 @@ class Register extends React.Component {
     }
 }
 
-export default Register;
+export default ResetPassword;
 

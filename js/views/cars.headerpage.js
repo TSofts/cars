@@ -73,7 +73,7 @@ class LoginPanel extends React.Component {
                 <Input className="cars-input" ref="username" type="text" placeholder="注册邮箱/用户名"/>
                 <Input className="cars-input" ref="password" type="password" placeholder="登陆密码"/>
                 <MenuItem divider />
-                <a style={{"float":"left"}}>忘记密码</a><Link to="/register" style={{"float":"right"}}>免费注册</Link>
+                <Link to="/forget" style={{"float":"left"}}>忘记密码</Link><Link to="/register" style={{"float":"right"}}>免费注册</Link>
                 <Button className="cars-button" onClick={this.handleLoginProceed.bind(this)}>{(LoginStore.isLoading()==true)?"登录中...":"登陆"}</Button>
             </form>
         )

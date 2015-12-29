@@ -6,9 +6,15 @@
     background-color: #dddddd;
 }
 
+span.title {
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
 .registry > ul > li {
-    padding: 190px 5px;
-    height: 60px;
+    padding: 15px 5px;
+    height: 70px;
 }
 
 .registry > ul > li.button {
@@ -22,10 +28,21 @@
 
 .login {
     background-color: #dddddd;
+    width: 75%;
+    margin: 0 auto;
 }
+
+.login >.btnLogin {
+    margin-bottom:0;
+}
+
 .login > ul > li {
     padding: 15px 5px;
     height: 70px;
+}
+
+.login > ul > li:last-child {
+    padding-top: 0;
 }
 
 .login > ul > li.button {

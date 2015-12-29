@@ -3,10 +3,9 @@
  */
 'use strict';
 import {Input,ButtonInput,Grid,Row,Col,Fade,Well,Label} from 'react-bootstrap'
+import { Link }  from 'react-router'
 
-
-class Register extends React.Component {
-
+class Registry extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -83,7 +82,6 @@ class Register extends React.Component {
     }
 
     validationPassword(password) {
-        var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (_.isEmpty(password)) {
             this.setState({
                 password: "error",
@@ -150,10 +148,10 @@ class Register extends React.Component {
 
     handleSubmit() {
         var user = {
-            email: $('#email').val(),
-            mobile: $('#mobile').val(),
-            password: $('#password').val(),
-            confirmpwd: $('#confirmpwd').val()
+            email: this.refs.email.getValue(),
+            mobile: this.refs.mobile.getValue(),
+            password: this.refs.password.getValue(),
+            confirmpwd: this.refs.confirmpwd.getValue()
         };
         if (this.validation(user)) {
         }
@@ -161,77 +159,102 @@ class Register extends React.Component {
 
     render() {
         return (
+            <form className="registry">
+                <span className="title">新用户注册:</span>
+                <ul>
+                    <li>
+                        <Input help={this.state.errorEmail} ref="email" type="email" bsStyle={this.state.email} label="注册邮箱"
+                               placeholder="请输入注册邮箱"
+                               labelClassName="col-xs-4 col-md-3" wrapperClassName="col-xs-8 col-md-9"/>
+                    </li>
+                    <li><Input help={this.state.errorMobile} ref="mobile" type="text" bsStyle={this.state.mobile} label="注册手机"
+                               placeholder="请输入注册手机"
+                               labelClassName="col-xs-4 col-md-3" wrapperClassName="col-xs-8 col-md-9"/>
+                    </li>
+                    <li><Input help={this.state.errorPassword} ref="password" type="password" bsStyle={this.state.password} label="密码"
+                               placeholder="请输入密码" labelClassName="col-xs-4 col-md-3"
+                               wrapperClassName="col-xs-8 col-md-9"/>
+                    </li>
+                    <li><Input help={this.state.errorConfirmpwd} ref="confirmpwd" type="password" bsStyle={this.state.confirmpwd} label="确认密码"
+                               placeholder="请确认密码" labelClassName="col-xs-4 col-md-3"
+                               wrapperClassName="col-xs-8 col-md-9"/>
+                    </li>
+                    <li className="button"><ButtonInput onClick={this.handleSubmit.bind(this)} value="免费注册"
+                                                        block
+                                                        wrapperClassName="col-md-offset-3 col-xs-offset-2"/>
+                    </li>
+                </ul>
+            </form>
+        )
+    }
+}
+
+
+class Login extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            username: "",
+            password: "",
+            openUsername: "none",
+            openPassword: "none",
+            errorUsername: "",
+            errorPassword: "",
+            user: {}
+        };
+    }
+
+    handleSLogin() {
+
+    }
+
+    render() {
+        return (
+            <form className="login">
+                <span className="title">已有账户:</span>
+                <ul>
+                    <li>
+                        <Input help={this.state.errorUsername} id="email" type="email" bsStyle={this.state.username} label="注册邮箱"
+                               placeholder="请输入注册邮箱"
+                               labelClassName="col-xs-4 col-md-3" wrapperClassName="col-xs-8 col-md-9"/>
+
+                        <div className="errorMsg" style={{"display":this.state.openUsername}}>
+                            {this.state.errorUsername}
+                        </div>
+                    </li>
+                    <li><Input id="password" type="password" bsStyle={this.state.password} label="密码"
+                               placeholder="请输入密码" labelClassName="col-xs-4 col-md-3"
+                               wrapperClassName="col-xs-8 col-md-9"/>
+
+                        <div className="errorMsg" style={{"display":this.state.openPassword}}>
+                            {this.state.errorPassword}
+                        </div>
+                    </li>
+                    <li className="button">
+                        <ButtonInput className="btnLogin" onClick={this.handleSLogin.bind(this)} value="登录"
+                                                        block
+                                                        wrapperClassName="col-md-offset-3 col-xs-offset-2"/>
+                    </li>
+                    <li>
+                        <Link to="/forget" className="col-md-offset-3 col-xs-offset-2">忘记密码</Link>
+                    </li>
+                </ul>
+            </form>
+        )
+    }
+}
+
+class AccountRegistry extends React.Component {
+
+    render() {
+        return (
             <Grid className="account-registry">
                 <Row>
                     <Col md={6} xs={12}>
-                        <form className="registry">
-                            <ul>
-                                <li>
-                                    <Input id="email" type="email" bsStyle={this.state.email} label="注册邮箱"
-                                           placeholder="请输入注册邮箱"
-                                           labelClassName="col-xs-4 col-md-5" wrapperClassName="col-xs-8 col-md-7"/>
-
-                                    <div className="errorMsg" style={{"display":this.state.openEmail}}>
-                                        <Label bsStyle="danger" className="col-md-offset-3 col-xs-offset-2">{this.state.errorEmail}</Label>
-                                    </div>
-                                </li>
-                                <li><Input id="mobile" type="text" bsStyle={this.state.mobile} label="注册手机"
-                                           placeholder="请输入注册手机"
-                                           labelClassName="col-xs-4 col-md-5" wrapperClassName="col-xs-8 col-md-7"/>
-
-                                    <div className="errorMsg" style={{"display":this.state.openMobile}}>
-                                        <Label bsStyle="danger" className="col-md-offset-3 col-xs-offset-2">{this.state.errorMobile}</Label>
-                                    </div>
-                                </li>
-                                <li><Input id="password" type="password" bsStyle={this.state.password} label="密码"
-                                           placeholder="请输入密码" labelClassName="col-xs-4 col-md-5"
-                                           wrapperClassName="col-xs-8 col-md-7"/>
-
-                                    <div className="errorMsg" style={{"display":this.state.openPassword}}>
-                                        <Label bsStyle="danger" className="col-md-offset-3 col-xs-offset-2">{this.state.errorPassword}</Label>
-                                    </div>
-                                </li>
-                                <li><Input id="confirmpwd" type="password" bsStyle={this.state.confirmpwd} label="确认密码"
-                                           placeholder="请确认密码" labelClassName="col-xs-4 col-md-5"
-                                           wrapperClassName="col-xs-8 col-md-7"/>
-
-                                    <div className="errorMsg" style={{"display":this.state.openConfirmpwd}}>
-                                        <Label bsStyle="danger" className="col-md-offset-3 col-xs-offset-2">{this.state.errorConfirmpwd}</Label>
-                                    </div>
-                                </li>
-                                <li className="button"><ButtonInput onClick={this.handleSubmit.bind(this)} value="免费注册"
-                                                                    block
-                                                                    wrapperClassName="col-md-offset-5 col-xs-offset-2"/>
-                                </li>
-                            </ul>
-                        </form>
+                        <Registry/>
                     </Col>
                     <Col md={6} xs={12}>
-                        <form className="login">
-                            <ul>
-                                <li>
-                                    <Input id="email" type="email" bsStyle={this.state.email} label="注册邮箱"
-                                           placeholder="请输入注册邮箱"
-                                           labelClassName="col-xs-4 col-md-5" wrapperClassName="col-xs-8 col-md-7"/>
-
-                                    <div className="errorMsg" style={{"display":this.state.openEmail}}>
-                                        {this.state.errorEmail}
-                                    </div>
-                                </li>
-                                <li><Input id="password" type="password" bsStyle={this.state.password} label="密码"
-                                           placeholder="请输入密码" labelClassName="col-xs-4 col-md-5"
-                                           wrapperClassName="col-xs-8 col-md-7"/>
-
-                                    <div className="errorMsg" style={{"display":this.state.openPassword}}>
-                                        {this.state.errorPassword}
-                                    </div>
-                                </li>
-                                <li className="button"><ButtonInput onClick={this.handleSubmit.bind(this)} value="免费注册"
-                                                                    block
-                                                                    wrapperClassName="col-xs-offset-5 col-xs-offset-2"/>
-                                </li>
-                            </ul>
-                        </form>
+                        <Login/>
                     </Col>
                 </Row>
             </Grid>
@@ -239,5 +262,5 @@ class Register extends React.Component {
     }
 }
 
-export default Register;
+export default AccountRegistry;
 

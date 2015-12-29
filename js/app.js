@@ -6,9 +6,10 @@ import Welcome from './views/cars.welcomepage'
 import UserCenter from './views/usercenter/cars.usercenterpage'
 import UserPanelPage from './views/usercenter/cars.ucindex'
 import Register from './views/accountmanage/cars.registerpage'
+import ResetPassword from './views/accountmanage/cars.resetpwdpage'
 
 require('jquery.cookie');
-require("bootstrap-webpack");
+//require("bootstrap-webpack");
 require("../css/override.css");
 require("../css/static.css");
 require("../css/app.css");
@@ -42,6 +43,7 @@ render((
                 <IndexRoute component={UserPanelPage}/>
             </Route>
             <Route path="/register" component={Register}/>
+            <Route path="/forget" component={ResetPassword}/>
         </Route>
 
     </Router>
