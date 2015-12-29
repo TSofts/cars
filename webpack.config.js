@@ -1,3 +1,6 @@
+/**
+ * Created by shawn on 15-12-23.
+ */
 var webpack = require('webpack'),
     path = require('path'),
     srcPath = path.join(__dirname, 'src');

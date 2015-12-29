@@ -1,9 +1,11 @@
-li {
-    list-style-type: none
+html body {
+    overflow-x: hidden;
+    height:100%;
+    width:100%;
 }
 
-ul.cross > li.left {
-    float: left
+li {
+    list-style-type: none
 }
 
 a:hover {
@@ -14,8 +16,6 @@ p {
     margin: 0;
 }
 
-.navbar>.container {
-    margin: 0;
-    padding:0;
-    width:100%;
+span.x-large {
+    font-size:x-large;
 }

@@ -8,8 +8,8 @@ class Footer extends React.Component {
 
     render() {
         return (
-            <div className="footer" style={{"background-color":"#ddd"}} fluid>
-                <ul>
+            <div className="container-foot" fluid>
+                <ul className="footer-menu">
                     <li>
                         关于养车网
                     </li>
@@ -24,9 +24,9 @@ class Footer extends React.Component {
                     </li>
                 </ul>
                 <br/>
-                <p>
+                <span>
                     CopyRight @ 2015 苏州长锦电子商务有限公司 ,All Rights Reserved.
-                </p>
+                </span>
             </div>
         )
     }

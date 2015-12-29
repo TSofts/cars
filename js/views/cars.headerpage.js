@@ -13,7 +13,6 @@ import LoginStore from '../store/cars.loginstore'
 import LoginAction from '../action/cars.loginaction'
 import MainAction from '../action/cars.mainaction'
 import HeaderAction from '../action/cars.headeraction'
-import DefaultImg from '../../image/test.png'
 
 class UserType extends React.Component {
     getTypeText() {
@@ -35,7 +34,7 @@ class UserType extends React.Component {
     }
 
     getResetButton() {
-        return <Button className="cars-button" onClick={this.handleResetType.bind(this)}><Glyphicon glyph="repeat"/></Button>
+        return <Button bsSize="small" className="cars-button" onClick={this.handleResetType.bind(this)}><Glyphicon glyph="repeat"/></Button>
     }
 
     render() {
@@ -44,9 +43,12 @@ class UserType extends React.Component {
             return (<div/>)
         }
 
-        let button = this.getResetButton();
+        //let button = this.getResetButton();
         return (
-            <Input className="cars-input" type="text" bsSize="small" placeholder={typeText} readOnly buttonAfter={button}/>);
+        <Navbar.Text>
+            {typeText} <Navbar.Link onClick={this.handleResetType.bind(this)}>重选</Navbar.Link>
+        </Navbar.Text>
+        )
 
     }
 }
@@ -78,26 +80,31 @@ class LoginPanel extends React.Component {
 }
 
 class UserInfo extends React.Component {
-    getDropDownPanel() {
+
+    handleLogout() {
+        localStorage.removeItem("*cars-sessioninfo");
+    }
+
+    render() {
         if (this.props.isLogged) {
             return (
-                <div>{this.props.user.username}</div>
+                <NavDropdown eventKey={3} title={this.props.user.username} id="basic-nav-dropdown">
+                    <ul className="header-menu">
+                        <li className="menu-ele"><Link to="/usercenter">会员中心</Link></li>
+                        <li className="menu-ele"><Link to="/security">账户安全</Link></li>
+                        <MenuItem divider />
+                        <li className="menu-ele"><Link to="/" onClick={this.handleLogout.bind(this)}>注销登录</Link></li>
+                    </ul>
+                </NavDropdown>
             )
         }
         else {
             return (
-                <LoginPanel/>
+                <NavDropdown eventKey={3} title="登录" id="basic-nav-dropdown">
+                    <LoginPanel/>
+                </NavDropdown>
             )
         }
-    }
-
-    render() {
-        let dropDown = this.getDropDownPanel();
-        return (
-            <NavDropdown eventKey={3} title="" id="basic-nav-dropdown">
-                {dropDown}
-            </NavDropdown>
-        )
     }
 }
 
@@ -126,18 +133,14 @@ class TopNav extends React.Component {
             <Navbar inverse>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        Cars
+                        <Link to="/">人来车往</Link>
                     </Navbar.Brand>
 
                 </Navbar.Header>
                 <Navbar.Collapse>
-                    <Nav>
 
-                    </Nav>
                     <Nav pullRight>
-                        <NavItem eventKey={1} href="#">
-                            <div className="header-type">{userType}</div>
-                        </NavItem>
+                        {userType}
                         {userInfo}
                     </Nav>
                 </Navbar.Collapse>

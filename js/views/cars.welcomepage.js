@@ -4,7 +4,7 @@
 
 'use strict';
 
-import { Grid, Row, Col } from 'react-bootstrap'
+import { Grid, Row, Col, Image,Button } from 'react-bootstrap'
 import OperatorFeeds from './cars.ownerpage'
 import UserRequestFeeds from './cars.operatorpage'
 import HeaderAction from '../action/cars.headeraction'
@@ -34,13 +34,14 @@ class Main extends React.Component {
             <Grid>
                 <Row>
                     <Col xs={12} md={6}>
+
                         <div className="container-box operator">
-                            <a onClick={this.handleUpdateState.bind(this,"operator")}>我是技师</a>
+                            <Button className="btn-operator" onClick={this.handleUpdateState.bind(this,"operator")}/>
                         </div>
                     </Col>
                     <Col xs={12} md={6}>
                         <div className="container-box owner">
-                            <a onClick={this.handleUpdateState.bind(this,"owner")}>我是车主</a>
+                            <Button className="btn-owner" onClick={this.handleUpdateState.bind(this,"owner")}/>
                         </div>
                     </Col>
                 </Row>
