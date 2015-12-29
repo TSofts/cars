@@ -11,6 +11,7 @@ import HeaderAction from '../action/cars.headeraction'
 import MainStore from '../store/cars.mainstore'
 import MainAction from '../action/cars.mainaction'
 import AltContainer from 'alt/AltContainer'
+import Register from '../views/cars.registerpage'
 
 class Main extends React.Component {
 
@@ -57,7 +58,7 @@ class Main extends React.Component {
                 return this.getOwnerPage();
                 break;
             default:
-                return this.getWelcomePage();
+                return <Register/>;
                 break;
         }
     }
