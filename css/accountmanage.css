@@ -12,18 +12,13 @@ span.title {
     font-size: 18px;
 }
 
-.registry > ul > li {
+.registry > ul > li,.login > ul > li,.reset-email > ul > li,.reset-mobile > ul > li {
     padding: 15px 5px;
     height: 70px;
 }
 
-.registry > ul > li.button {
+.registry > ul > li.button,.login > ul > li.button,.reset-email > ul > li.button,.reset-mobile > ul > li.button {
     margin: 0 15px;
-}
-
-.registry > ul > li > .errorMsg {
-    margin: 2px 120px;
-    color: red;
 }
 
 .login {
@@ -36,20 +31,19 @@ span.title {
     margin-bottom:0;
 }
 
-.login > ul > li {
-    padding: 15px 5px;
-    height: 70px;
-}
-
 .login > ul > li:last-child {
     padding-top: 0;
 }
 
-.login > ul > li.button {
-    margin: 0 15px;
+.account-reset {
+    width: 80%;
+    margin: 0 auto;
 }
 
-.login > ul > li > .errorMsg {
-    margin: 2px 120px;
-    color: red;
+.reset-email {
+    border-right: solid 1px;
+}
+.reset-email,.reset-mobile {
+    width: 90%;
+    margin: 0 auto;
 }

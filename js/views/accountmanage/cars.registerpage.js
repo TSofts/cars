@@ -13,10 +13,6 @@ class Registry extends React.Component {
             mobile: "",
             password: "",
             confirmpwd: "",
-            openEmail: "none",
-            openMobile: "none",
-            openPassword: "none",
-            openConfirmpwd: "none",
             errorEmail: "",
             errorMobile: "",
             errorPassword: "",
@@ -30,7 +26,6 @@ class Registry extends React.Component {
         if (_.isEmpty(email)) {
             this.setState({
                 email: "error",
-                openEmail: "inline",
                 errorEmail: "Email不能为空"
             });
             return false;
@@ -38,7 +33,6 @@ class Registry extends React.Component {
         else if (!re.test(email)) {
             this.setState({
                 email: "error",
-                openEmail: "inline",
                 errorEmail: "请输入正确的Email"
             });
             return false;
@@ -46,7 +40,6 @@ class Registry extends React.Component {
         else {
             this.setState({
                 email: "",
-                openEmail: "none",
                 errorEmail: ""
             })
         }
@@ -58,7 +51,6 @@ class Registry extends React.Component {
         if (_.isEmpty(phone)) {
             this.setState({
                 mobile: "error",
-                openMobile: "inline",
                 errorMobile: "手机不能为空"
             });
             return false;
@@ -66,7 +58,6 @@ class Registry extends React.Component {
         else if (!re.test(phone)) {
             this.setState({
                 mobile: "error",
-                openMobile: "inline",
                 errorMobile: "请输入正确的手机号码"
             });
             return false;
@@ -74,7 +65,6 @@ class Registry extends React.Component {
         else {
             this.setState({
                 mobile: "",
-                openMobile: "none",
                 errorMobile: ""
             })
         }
@@ -85,7 +75,6 @@ class Registry extends React.Component {
         if (_.isEmpty(password)) {
             this.setState({
                 password: "error",
-                openPassword: "inline",
                 errorPassword: "密码不能为空"
             });
             return false;
@@ -93,7 +82,6 @@ class Registry extends React.Component {
         else if (password.length < 8) {
             this.setState({
                 password: "error",
-                openPassword: "inline",
                 errorPassword: "请输入至少8位的密码"
             });
             return false;
@@ -101,7 +89,6 @@ class Registry extends React.Component {
         else {
             this.setState({
                 password: "",
-                openPassword: "none",
                 errorPassword: ""
             })
         }
@@ -112,7 +99,6 @@ class Registry extends React.Component {
         if (_.isEmpty(confirmpwd)) {
             this.setState({
                 confirmpwd: "error",
-                openConfirmpwd: "inline",
                 errorConfirmpwd: "确认密码不能为空"
             });
             return false;
@@ -120,7 +106,6 @@ class Registry extends React.Component {
         else if (password != confirmpwd) {
             this.setState({
                 confirmpwd: "error",
-                openConfirmpwd: "inline",
                 errorConfirmpwd: "两次输入的密码不一致"
             });
             return false;
@@ -128,7 +113,6 @@ class Registry extends React.Component {
         else {
             this.setState({
                 confirmpwd: "",
-                openConfirmpwd: "none",
                 errorConfirmpwd: ""
             })
         }
@@ -196,8 +180,6 @@ class Login extends React.Component {
         this.state = {
             username: "",
             password: "",
-            openUsername: "none",
-            openPassword: "none",
             errorUsername: "",
             errorPassword: "",
             user: {}
@@ -214,21 +196,13 @@ class Login extends React.Component {
                 <span className="title">已有账户:</span>
                 <ul>
                     <li>
-                        <Input help={this.state.errorUsername} id="email" type="email" bsStyle={this.state.username} label="注册邮箱"
+                        <Input help={this.state.errorUsername} ref="email" type="email" bsStyle={this.state.username} label="注册邮箱"
                                placeholder="请输入注册邮箱"
                                labelClassName="col-xs-4 col-md-3" wrapperClassName="col-xs-8 col-md-9"/>
-
-                        <div className="errorMsg" style={{"display":this.state.openUsername}}>
-                            {this.state.errorUsername}
-                        </div>
                     </li>
-                    <li><Input id="password" type="password" bsStyle={this.state.password} label="密码"
+                    <li><Input help={this.state.errorPassword} ref="password" type="password" bsStyle={this.state.password} label="密码"
                                placeholder="请输入密码" labelClassName="col-xs-4 col-md-3"
                                wrapperClassName="col-xs-8 col-md-9"/>
-
-                        <div className="errorMsg" style={{"display":this.state.openPassword}}>
-                            {this.state.errorPassword}
-                        </div>
                     </li>
                     <li className="button">
                         <ButtonInput className="btnLogin" onClick={this.handleSLogin.bind(this)} value="登录"

@@ -4,25 +4,15 @@
 'use strict';
 import {Input,ButtonInput,Grid,Row,Col,Fade,Well,Label} from 'react-bootstrap'
 
-
-class ResetPassword extends React.Component {
-
+class Email extends React.Component {
     constructor() {
         super();
         this.state = {
             email: "",
-            mobile: "",
-            password: "",
-            confirmpwd: "",
-            openEmail: "none",
-            openMobile: "none",
-            openPassword: "none",
-            openConfirmpwd: "none",
+            validstr: "",
             errorEmail: "",
-            errorMobile: "",
-            errorPassword: "",
-            errorConfirmpwd: "",
-            user: {}
+            errorValidStr: "",
+            user:{}
         };
     }
 
@@ -31,7 +21,6 @@ class ResetPassword extends React.Component {
         if (_.isEmpty(email)) {
             this.setState({
                 email: "error",
-                openEmail: "inline",
                 errorEmail: "Email不能为空"
             });
             return false;
@@ -39,7 +28,6 @@ class ResetPassword extends React.Component {
         else if (!re.test(email)) {
             this.setState({
                 email: "error",
-                openEmail: "inline",
                 errorEmail: "请输入正确的Email"
             });
             return false;
@@ -47,100 +35,19 @@ class ResetPassword extends React.Component {
         else {
             this.setState({
                 email: "",
-                openEmail: "none",
                 errorEmail: ""
             })
         }
         return true;
     }
 
-    validationMobile(phone) {
-        var re = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{4}[-\s\.]{0,1}[0-9]{4}$/;
-        if (_.isEmpty(phone)) {
-            this.setState({
-                mobile: "error",
-                openMobile: "inline",
-                errorMobile: "手机不能为空"
-            });
-            return false;
-        }
-        else if (!re.test(phone)) {
-            this.setState({
-                mobile: "error",
-                openMobile: "inline",
-                errorMobile: "请输入正确的手机号码"
-            });
-            return false;
-        }
-        else {
-            this.setState({
-                mobile: "",
-                openMobile: "none",
-                errorMobile: ""
-            })
-        }
-        return true;
-    }
+    validationStr(){
 
-    validationPassword(password) {
-        if (_.isEmpty(password)) {
-            this.setState({
-                password: "error",
-                openPassword: "inline",
-                errorPassword: "密码不能为空"
-            });
-            return false;
-        }
-        else if (password.length < 8) {
-            this.setState({
-                password: "error",
-                openPassword: "inline",
-                errorPassword: "请输入至少8位的密码"
-            });
-            return false;
-        }
-        else {
-            this.setState({
-                password: "",
-                openPassword: "none",
-                errorPassword: ""
-            })
-        }
-        return true;
-    }
-
-    validationConfirmpwd(password, confirmpwd) {
-        if (_.isEmpty(confirmpwd)) {
-            this.setState({
-                confirmpwd: "error",
-                openConfirmpwd: "inline",
-                errorConfirmpwd: "确认密码不能为空"
-            });
-            return false;
-        }
-        else if (password != confirmpwd) {
-            this.setState({
-                confirmpwd: "error",
-                openConfirmpwd: "inline",
-                errorConfirmpwd: "两次输入的密码不一致"
-            });
-            return false;
-        }
-        else {
-            this.setState({
-                confirmpwd: "",
-                openConfirmpwd: "none",
-                errorConfirmpwd: ""
-            })
-        }
-        return true;
     }
 
     validation(user) {
         var eb = this.validataionEmail(user.email);
-        var mb = this.validationMobile(user.mobile);
-        var pb = this.validationPassword(user.password);
-        var cb = this.validationConfirmpwd(user.password, user.confirmpwd);
+        var pb = this.validationStr(user.password);
         if (!eb || !mb || !pb || !cb) {
             return false;
         }
@@ -149,10 +56,8 @@ class ResetPassword extends React.Component {
 
     handleSubmit() {
         var user = {
-            email: $('#email').val(),
-            mobile: $('#mobile').val(),
-            password: $('#password').val(),
-            confirmpwd: $('#confirmpwd').val()
+            password: this.refs.password.getValue(),
+            validstr: this.refs.validstr.getValue()
         };
         if (this.validation(user)) {
         }
@@ -160,60 +65,120 @@ class ResetPassword extends React.Component {
 
     render() {
         return (
-            <Grid>
+            <form className="reset-email">
+                <ul>
+                    <li>
+                        <Input help={this.state.errorMobile} ref="email" type="email" bsStyle={this.state.email} label="注册邮箱"
+                               placeholder="请输入注册邮箱"
+                               labelClassName="col-xs-4 col-md-2" wrapperClassName="col-xs-8 col-md-10"/>
+                    </li>
+                    <li><Input help={this.state.errorValidStr} ref="validstr" type="password" bsStyle={this.state.validstr} label="确认密码"
+                               placeholder="请确认密码" labelClassName="col-xs-4 col-md-2"
+                               wrapperClassName="col-xs-8 col-md-10"/>
+                    </li>
+                    <li className="button"><ButtonInput onClick={this.handleSubmit.bind(this)} value="重设密码"
+                                                        block
+                                                        wrapperClassName="col-xs-offset-4 col-xs-offset-2"/>
+                    </li>
+                </ul>
+            </form>
+        )
+    }
+}
+
+class Mobile extends React.Component {
+    constructor(){
+        super();
+        this.state = {
+            mobile: "",
+            validstr: "",
+            errorMobile:"",
+            errorValidStr:"",
+            user: {}
+        };
+    }
+
+    validationMobile(phone) {
+        var re = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{4}[-\s\.]{0,1}[0-9]{4}$/;
+        if (_.isEmpty(phone)) {
+            this.setState({
+                mobile: "error",
+                errorMobile: "手机不能为空"
+            });
+            return false;
+        }
+        else if (!re.test(phone)) {
+            this.setState({
+                mobile: "error",
+                errorMobile: "请输入正确的手机号码"
+            });
+            return false;
+        }
+        else {
+            this.setState({
+                mobile: "",
+                errorMobile: ""
+            })
+        }
+        return true;
+    }
+
+    validationStr(){
+
+    }
+
+    validation(user) {
+        var mb = this.validationMobile(user.mobile);
+        var pb = this.validationStr(user.password);
+        if (!eb || !mb || !pb || !cb) {
+            return false;
+        }
+        return true;
+    }
+
+    handleSubmit() {
+        var user = {
+            password: this.refs.password.getValue(),
+            validstr: this.refs.validstr.getValue()
+        };
+        if (this.validation(user)) {
+        }
+    }
+
+    render() {
+        return (
+            <form className="reset-mobile">
+                <ul>
+                    <li><Input help={this.state.errorMobile} ref="mobile" type="text" bsStyle={this.state.mobile} label="注册手机"
+                               placeholder="请输入注册手机"
+                               labelClassName="col-xs-4 col-md-2" wrapperClassName="col-xs-8 col-md-10"/>
+                    </li>
+                    <li><Input help={this.state.errorValidStr} ref="validstr" type="password" bsStyle={this.state.validstr} label="确认密码"
+                               placeholder="请确认密码" labelClassName="col-xs-4 col-md-2"
+                               wrapperClassName="col-xs-8 col-md-10"/>
+                    </li>
+                    <li className="button"><ButtonInput onClick={this.handleSubmit.bind(this)} value="重设密码"
+                                                        block
+                                                        wrapperClassName="col-xs-offset-4 col-xs-offset-2"/>
+                    </li>
+                </ul>
+            </form>
+        )
+    }
+}
+
+class ResetPassword extends React.Component {
+
+    render() {
+        return (
+            <Grid className="account-reset">
+                <span className="title">找回密码</span>
                 <Row>
                     <Col md={6} xs={12}>
-                        <form className="reset-email">
-                            <ul>
-                                <li>
-                                    <Input id="email" type="email" bsStyle={this.state.email} label="注册邮箱"
-                                           placeholder="请输入注册邮箱"
-                                           labelClassName="col-xs-4 col-md-2" wrapperClassName="col-xs-8 col-md-10"/>
-
-                                    <div className="errorMsg" style={{"display":this.state.openEmail}}>
-                                        {this.state.errorEmail}
-                                    </div>
-                                </li>
-                                <li><Input id="confirmpwd" type="password" bsStyle={this.state.confirmpwd} label="确认密码"
-                                           placeholder="请确认密码" labelClassName="col-xs-4 col-md-2"
-                                           wrapperClassName="col-xs-8 col-md-10"/>
-
-                                    <div className="errorMsg" style={{"display":this.state.openConfirmpwd}}>
-                                        {this.state.errorConfirmpwd}
-                                    </div>
-                                </li>
-                                <li className="button"><ButtonInput onClick={this.handleSubmit.bind(this)} value="重设密码"
-                                                                    block
-                                                                    wrapperClassName="col-xs-offset-4 col-xs-offset-2"/>
-                                </li>
-                            </ul>
-                        </form>
+                        <Email/>
                     </Col>
                     <Col md={6} xs={12}>
-                        <form className="reset-mobile">
-                            <ul>
-                                <li><Input id="mobile" type="text" bsStyle={this.state.mobile} label="注册手机"
-                                           placeholder="请输入注册手机"
-                                           labelClassName="col-xs-4 col-md-2" wrapperClassName="col-xs-8 col-md-10"/>
-
-                                    <div className="errorMsg" style={{"display":this.state.openMobile}}>
-                                        {this.state.errorMobile}
-                                    </div>
-                                </li>
-                                <li><Input id="confirmpwd" type="password" bsStyle={this.state.confirmpwd} label="确认密码"
-                                           placeholder="请确认密码" labelClassName="col-xs-4 col-md-2"
-                                           wrapperClassName="col-xs-8 col-md-10"/>
-
-                                    <div className="errorMsg" style={{"display":this.state.openConfirmpwd}}>
-                                        <Label bsStyle="info">{this.state.errorConfirmpwd}</Label>
-                                    </div>
-                                </li>
-                                <li className="button"><ButtonInput onClick={this.handleSubmit.bind(this)} value="重设密码"
-                                                                    block
-                                                                    wrapperClassName="col-xs-offset-4 col-xs-offset-2"/>
-                                </li>
-                            </ul>
-                        </form>
+                        <Mobile/>
                     </Col>
                 </Row>
             </Grid>

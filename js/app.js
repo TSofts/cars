@@ -9,7 +9,7 @@ import Register from './views/accountmanage/cars.registerpage'
 import ResetPassword from './views/accountmanage/cars.resetpwdpage'
 
 require('jquery.cookie');
-//require("bootstrap-webpack");
+require("bootstrap-webpack");
 require("../css/override.css");
 require("../css/static.css");
 require("../css/app.css");
