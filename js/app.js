@@ -7,13 +7,15 @@ import UserCenter from './views/usercenter/cars.usercenterpage'
 import UserPanelPage from './views/usercenter/cars.ucindex'
 import Register from './views/accountmanage/cars.registerpage'
 import ResetPassword from './views/accountmanage/cars.resetpwdpage'
+import Request from './views/owner/cars.request'
 
 require('jquery.cookie');
-require("bootstrap-webpack");
+//require("bootstrap-webpack");
 require("../css/override.css");
 require("../css/static.css");
 require("../css/app.css");
 require("../css/accountmanage.css");
+require("../css/owner.css");
 
 class App extends React.Component {
 
@@ -44,6 +46,8 @@ render((
             </Route>
             <Route path="/register" component={Register}/>
             <Route path="/forget" component={ResetPassword}/>
+            <Route path="/request" component={Request}>
+            </Route>
         </Route>
 
     </Router>
