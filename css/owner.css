@@ -13,3 +13,10 @@ ul.request-nav > li {
 ul.request-nav > li:last-child {
     float: none;
 }
+
+ul.car-brand-container >li:last-child {
+    float: none;
+}
+ul.car-brand-container>li {
+    float: left;
+}
