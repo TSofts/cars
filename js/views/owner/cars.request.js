@@ -13,20 +13,8 @@ class Request extends React.Component {
         return (
             <div className="request-container">
                 <Link to="/">首页</Link> > 发布保养
-                <ul className="request-nav">
-                    <li className="request">
-                        第一步
-                    </li>
-                    <li className="request">
-                        第二步
-                    </li>
-                    <li className="request">
-                        第三步
-                    </li>
-                </ul>
-                <div className="request-content">
-                    {this.props.children}
-                </div>
+
+                {this.props.children}
             </div>
         )
     }
