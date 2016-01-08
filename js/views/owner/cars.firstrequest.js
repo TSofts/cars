@@ -2,6 +2,9 @@
  * Created by shawn on 16-1-4.
  */
 import { Modal,Button } from 'react-bootstrap'
+import AltContainer from 'alt/AltContainer'
+
+import CarSelectorStore from '../../store/cars.carselectorstore'
 
 import RequestHeader from './cars.requestheader'
 import CarSelector from './cars.carselector'
@@ -32,8 +35,13 @@ class FirstStepBody extends React.Component {
                         <Modal.Title>选择车型</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <CarSelector/>
+                        <AltContainer store={CarSelectorStore}>
+                            <CarSelector/>
+                        </AltContainer>
                     </Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={this.hideModal}>Close</Button>
+                    </Modal.Footer>
                 </Modal>
             </div>
         )
