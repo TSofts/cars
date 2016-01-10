@@ -27,6 +27,11 @@ ul.car-brand-container>li {
     padding: 5px 7px;
 }
 
+ul.car-brand-container>li:hover {
+    cursor:pointer;
+    border-color: red;
+}
+
 
 .select-car-brand {
     width: 40px;

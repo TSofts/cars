@@ -16,15 +16,16 @@ class CarBrand extends React.Component {
     }
 
 
-    select() {
-        CarSelectorActions.gotoStep(2);
+    select(b) {
+        CarSelectorActions.setBrand(b);
     }
+
     getNodes(){
         let component = this;
         return _.map(_.filter(Cars.brands,function(item){
             return item.alpha == component.props.selected;
         }),function(item){
-            return <li onClick = {component.select.bind(this)} ><Image className="select-car-brand"
+            return <li onClick = {component.select.bind(this,item.name)} ><Image className="select-car-brand"
                               src={require("../../../image/cars/"+item.brand+".png")}/><span className="select-car-name">{item.name}</span></li>
 
         })
@@ -50,10 +51,12 @@ class BrandSelector extends React.Component {
     }
 
     filter(v) {
+
         this.setState({
             alpha: v
         })
     }
+
     getAlphaList() {
         let size = 26;
         let start = 65;
@@ -82,25 +85,53 @@ class BrandSelector extends React.Component {
 }
 
 class SeriesSelector extends React.Component {
+
+    select(s) {
+        CarSelectorActions.setSeries(s);
+    }
+
     render () {
+        let component = this;
+        let node = _.map(this.props.series,function(item){
+            return <li onClick = {component.select.bind(this,item.name)} ><span className="select-car-name">{item.name}</span></li>;
+
+        });
         return (
-            <div>Series</div>
+            <div>{node}</div>
         )
     }
 }
 
 class VolumeSelector extends React.Component {
+    select(v) {
+        CarSelectorActions.setVolume(v);
+    }
+
     render () {
+        let component = this;
+        let node = _.map(this.props.volumes,function(item){
+            return <li onClick = {component.select.bind(this,item.name)} ><span className="select-car-name">{item.name}</span></li>;
+
+        });
         return (
-            <div></div>
+            <div>{node}</div>
         )
     }
 }
 
 class YearSelector extends React.Component {
-    render() {
+    select(y) {
+        CarSelectorActions.setSeries(y);
+    }
+
+    render () {
+        let component = this;
+        let node = _.map(this.props.years,function(item){
+            return <li onClick = {component.select.bind(this,item)} ><span className="select-car-name">{item}</span></li>;
+
+        });
         return (
-            <div></div>
+            <div>{node}</div>
         )
     }
 }
@@ -111,8 +142,6 @@ class CarSelector extends React.Component {
 
 
         this.state = {
-            step: 1,
-            brand: "",
             series: "",
             volume: "",
             year: ""
@@ -126,14 +155,12 @@ class CarSelector extends React.Component {
                     <BrandSelector/>
             );
 
-            case 2: return <SeriesSelector/>;
-            case 3: return <VolumeSelector/>;
-            case 4: return <YearSelector/>;
+            case 2: return <SeriesSelector brand={this.props.brand} series={this.props.serieslist}/>;
+            case 3: return <VolumeSelector series={this.props.series} volumes={this.props.volumelist}/>;
+            case 4: return <YearSelector volume={this.props.volume} years={this.props.yearlist}/>;
         }
     }
     render() {
-        console.debug("Car selector");
-        console.debug(this.props.step);
         let content = this.getCurrentContent(this.props.step);
         return (
             <div className="car-selector-container">

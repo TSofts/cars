@@ -1,17 +1,23 @@
 import alt from '../alt'
 
 class CarSelectorActions {
-    gotoStep(s) {
-        console.debug("action");
+
+    setBrand(b) {
+        this.dispatch(b);
+    }
+
+    setSeries(s) {
         this.dispatch(s);
     }
-
-    finishSeries(brands) {
-        this.dispatch(brands);
+    setVolume(v){
+        this.dispatch(v);
     }
 
-    finishYear(brands){
-        this.dispatch(brands);
+    setYear(y) {
+        this.dispatch(y);
+    }
+    resetStep() {
+        this.dispatch();
     }
 
 }

@@ -6,6 +6,8 @@ import AltContainer from 'alt/AltContainer'
 
 import CarSelectorStore from '../../store/cars.carselectorstore'
 
+import CarSelectorActions from '../../action/cars.carselectoraction'
+
 import RequestHeader from './cars.requestheader'
 import CarSelector from './cars.carselector'
 
@@ -23,6 +25,7 @@ class FirstStepBody extends React.Component {
     }
 
     open() {
+        CarSelectorActions.resetStep();
         this.setState({ showModal: true });
     }
 
