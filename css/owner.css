@@ -32,6 +32,10 @@ ul.car-brand-container>li:hover {
     border-color: red;
 }
 
+.request-content>form>div {
+    height: 30px;
+    margin: 5px 10px;
+}
 
 .select-car-brand {
     width: 40px;

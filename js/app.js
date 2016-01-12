@@ -11,7 +11,7 @@ import Request from './views/owner/cars.request'
 import FirstStep from './views/owner/cars.firstrequest'
 
 require('jquery.cookie');
-//require("bootstrap-webpack");
+require("bootstrap-webpack");
 require("../css/override.css");
 require("../css/static.css");
 require("../css/app.css");
@@ -47,9 +47,7 @@ render((
             </Route>
             <Route path="/register" component={Register}/>
             <Route path="/forget" component={ResetPassword}/>
-            <Route path="/request" component={Request}>
-                <IndexRoute component={FirstStep}/>
-            </Route>
+            <Route path="/request" component={Request}/>
         </Route>
 
     </Router>

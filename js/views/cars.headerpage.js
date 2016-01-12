@@ -14,7 +14,7 @@ import LoginStore from '../store/cars.loginstore'
 import LoginAction from '../action/cars.loginaction'
 import MainAction from '../action/cars.mainaction'
 import HeaderAction from '../action/cars.headeraction'
-
+import RequestSelectorActions from '../action/cars.requestaction.js'
 
 class UserType extends React.Component {
     getTypeText() {
@@ -121,23 +121,16 @@ class RequestBtn extends React.Component {
         };
     }
 
-    showModal() {
-
-        this.setState({show: true});
-    }
-
-    hideModal() {
-        this.setState({show: false});
+    cleanRequest() {
+        RequestSelectorActions.resetRequest();
     }
 
     render() {
         let userType = this.props.userType;
-        let smClose = () => this.setState({smShow: false});
         if (userType == 'owner') {
             return (
-                <NavItem onClick={this.showModal.bind(this)}>
+                <NavItem onClick={this.cleanRequest.bind(this)}>
                     <Link to="/request">我要保养</Link>
-
                 </NavItem>
 
             )
