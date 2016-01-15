@@ -11,7 +11,7 @@ import Request from './views/owner/cars.request'
 import FirstStep from './views/owner/cars.firstrequest'
 
 require('jquery.cookie');
-require("bootstrap-webpack");
+//require("bootstrap-webpack");
 require("../css/override.css");
 require("../css/static.css");
 require("../css/app.css");

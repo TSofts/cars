@@ -11,6 +11,7 @@ class CarSelectorStore {
         this.serieslist = [];
         this.year = "";
         this.yearlist = [];
+        this.car = {};
 
         this.bindListeners({
             handleSetBrand: CarSelectorActions.setBrand,
@@ -50,6 +51,10 @@ class CarSelectorStore {
     handleSetYears(y) {
         this.year = y;
         this.step = 5;
+        this.car.year = y;
+        this.car.volume = this.volume;
+        this.car.series = this.series;
+        this.car.brand = this.brand;
     }
 
 
