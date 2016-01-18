@@ -6,7 +6,6 @@ class LoginStore {
     constructor() {
         this.session = localStorage.getItem("*cars-sessioninfo");
         this.isLogged = (this.session != null && this.session != undefined);
-        console.debug("loginStore"+this.isLogged);
         this.user={};
         if(this.isLogged ){
             this.user = JSON.parse(this.session);
@@ -23,7 +22,6 @@ class LoginStore {
     }
 
     handleLoginProceed(usr) {
-        console.debug("222");
         this.isLogged = true;
     }
 
@@ -32,7 +30,6 @@ class LoginStore {
     }
 
     handleLoginFailed(errorMessage) {
-        console.debug("store");
         this.errorMessage = errorMessage;
         this.isLogged = false;
     }

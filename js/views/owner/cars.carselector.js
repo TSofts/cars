@@ -122,6 +122,7 @@ class VolumeSelector extends React.Component {
 class YearSelector extends React.Component {
     select(y) {
         CarSelectorActions.setYear(y);
+        CarSelectorActions.showModel(false);
     }
 
     render () {
@@ -139,13 +140,6 @@ class YearSelector extends React.Component {
 class CarSelector extends React.Component {
     constructor(){
         super();
-
-
-        this.state = {
-            series: "",
-            volume: "",
-            year: ""
-        }
     }
 
     getCurrentContent(step) {

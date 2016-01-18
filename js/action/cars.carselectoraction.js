@@ -20,6 +20,10 @@ class CarSelectorActions {
         this.dispatch();
     }
 
+    showModel(f) {
+        this.dispatch(f);
+    }
+
 }
 
 export default alt.createActions(CarSelectorActions);

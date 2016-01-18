@@ -10,28 +10,37 @@ import CarSelectorActions from '../../action/cars.carselectoraction'
 import RequestSelectorActions from '../../action/cars.requestaction.js'
 import RequestHeader from './cars.requestheader'
 import CarSelector from './cars.carselector'
+import Cache from '../../common/cache.js'
 
 class CarSection extends React.Component {
     constructor() {
         super();
-        this.state = {
-            showModal: false
-        }
     }
     close() {
-        this.setState({ showModal: false });
+        CarSelectorActions.showModel(false);
     }
 
     open() {
-        CarSelectorActions.resetStep();
-        this.setState({ showModal: true });
+        CarSelectorActions.showModel(true);
     }
-    render() {
 
-        if(!_.isEmpty(this.props.car)){
+    getCarInfo() {
+        return (
+            <div>
+                <div>{this.props.car.brand}</div>
+                <div>{this.props.car.volume}</div>
+                <div>{this.props.car.year}</div>
+            </div>
+        )
+    }
+
+    render() {
+        let carinfo = this.getCarInfo();
+        let carselector =(!_.isEmpty(this.props.car))?(<span>{carinfo}<Button onClick={this.open.bind(this)}>重选</Button></span>):(<Button onClick={this.open.bind(this)}>选择车型</Button>);
+
             return (
-                <div>test<Button onClick={this.open.bind(this)}>重选</Button>
-                    <Modal show={this.state.showModal} onHide={this.close.bind(this)} enforceFocus={true} autoFocus={true}>
+                <div>{carselector}
+                    <Modal show={this.props.showModal} onHide={this.close.bind(this)} enforceFocus={true} autoFocus={true}>
                         <Modal.Header closeButton>
                             <Modal.Title>选择车型</Modal.Title>
                         </Modal.Header>
@@ -46,26 +55,7 @@ class CarSection extends React.Component {
                     </Modal>
                 </div>
             )
-        }
-        else{
-            return (
-                <div><Button onClick={this.open.bind(this)}>选择车型</Button>
-                    <Modal show={this.state.showModal} onHide={this.close.bind(this)} enforceFocus={true} autoFocus={true}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>选择车型</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <AltContainer store={CarSelectorStore}>
-                                <CarSelector onClose={this.close()}/>
-                            </AltContainer>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button onClick={this.hideModal}>Close</Button>
-                        </Modal.Footer>
-                    </Modal>
-                </div>
-            )
-        }
+
 
     }
 }
@@ -74,13 +64,67 @@ class CarSection extends React.Component {
 class FirstStepBody extends React.Component {
 
 
+    constructor() {
+        super();
+        this.state = {
+            distance:"",
+            errorDistance:"",
+            time:"",
+            errorTime:""
+        }
+    }
 
+    validateDistance(d) {
+        if(_.isEmpty(d)){
+            this.setState({
+                distance: "error",
+                errorDistance:"距离不能为空"
+            });
+            return false;
+        }
+        else {
+            this.setState({
+                distance: "",
+                errorDistance:""
+            });
+            return true;
+        }
+    }
+
+    validateTime(t){
+        if(_.isEmpty(t)){
+            this.setState({
+                time: "error",
+                errorTime:"时间不能为空"
+            });
+            return false;
+        }
+        else {
+            this.setState({
+                time: "",
+                errorTime:""
+            });
+            return true;
+        }
+    }
+
+    validate(){
+        let d = this.validateDistance(this.refs.distance.getValue());
+        let t = this.validateTime(this.refs.time.getValue());
+        if(!d||!t){
+            return false;
+        }
+        return true;
+    }
 
     next() {
-        let b = {
-            car:"Audi"
-        };
-        RequestSelectorActions.setCar(b);
+        if(!this.validate()){
+            return;
+        }
+        let car = JSON.parse(Cache.get("carinfo"));
+        car.distance = this.refs.distance.getValue();
+        car.time = this.refs.time.getValue();
+        RequestSelectorActions.setCar(car);
     }
 
 
@@ -96,12 +140,12 @@ class FirstStepBody extends React.Component {
                 </Row>
                 <Row>
                     <Col md={6}>
-                        <Input type="text" label="当前行驶里程：" placeholder="当前行驶里程" labelClassName="col-md-2" wrapperClassName="col-md-4"/>
+                        <Input bsStyle={this.state.distance} ref="distance" help={this.state.errorDistance} type="text" label="当前行驶里程：" placeholder="当前行驶里程" labelClassName="col-md-2" wrapperClassName="col-md-4"/>
                     </Col>
                 </Row>
                 <Row>
                     <Col md={6}>
-                        <Input type="text" label="新车上路时间：" placeholder="Enter text" labelClassName="col-md-2" wrapperClassName="col-md-4"/>
+                        <Input bsStyle={this.state.time} ref="time" help={this.state.errorTime} type="text" label="新车上路时间：" placeholder="Enter text" labelClassName="col-md-2" wrapperClassName="col-md-4"/>
                     </Col>
                 </Row>
                 <Row>

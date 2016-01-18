@@ -1,9 +1,12 @@
 import CarSelectorActions from '../action/cars.carselectoraction'
 import Cars from '../common/cars'
+import Cache from '../common/cache'
 import alt from '../alt'
 
 class CarSelectorStore {
     constructor() {
+
+        this.showModal = false;
         this.step = 1;
         this.brand = "";
         this.volumelist = [];
@@ -11,18 +14,26 @@ class CarSelectorStore {
         this.serieslist = [];
         this.year = "";
         this.yearlist = [];
-        this.car = {};
+        this.car = _.isEmpty(Cache.get("carinfo"))?{}:JSON.parse(Cache.get("carinfo"));
+
 
         this.bindListeners({
             handleSetBrand: CarSelectorActions.setBrand,
             handleSetVolume: CarSelectorActions.setVolume,
             handleSetSeries: CarSelectorActions.setSeries,
             handleSetYears: CarSelectorActions.setYear,
-            handleResetStep: CarSelectorActions.resetStep
+            handleResetStep: CarSelectorActions.resetStep,
+            handleShowModel: CarSelectorActions.showModel
         });
 
     }
 
+    handleShowModel(flag) {
+        this.showModal = flag;
+        if(flag){
+            this.handleResetStep();
+        }
+    }
 
     handleSetBrand(b) {
         this.brand = b;
@@ -51,14 +62,17 @@ class CarSelectorStore {
     handleSetYears(y) {
         this.year = y;
         this.step = 5;
-        this.car.year = y;
+        this.handleSetCar();
+    }
+
+    handleSetCar() {
+
+        this.car.year = this.year;
         this.car.volume = this.volume;
         this.car.series = this.series;
         this.car.brand = this.brand;
+        Cache.add("carinfo",JSON.stringify(this.car));
     }
-
-
-
 
     handleResetStep(){
         this.step = 1;
