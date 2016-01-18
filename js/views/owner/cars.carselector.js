@@ -121,7 +121,7 @@ class VolumeSelector extends React.Component {
 
 class YearSelector extends React.Component {
     select(y) {
-        CarSelectorActions.setSeries(y);
+        CarSelectorActions.setYear(y);
     }
 
     render () {
