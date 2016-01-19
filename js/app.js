@@ -8,7 +8,7 @@ import UserPanelPage from './views/usercenter/cars.ucindex'
 import Register from './views/accountmanage/cars.registerpage'
 import ResetPassword from './views/accountmanage/cars.resetpwdpage'
 import Request from './views/owner/cars.request'
-import FirstStep from './views/owner/cars.firstrequest'
+import FirstStep from './views/owner/cars.carselectorrequest.js'
 
 require('jquery.cookie');
 //require("bootstrap-webpack");

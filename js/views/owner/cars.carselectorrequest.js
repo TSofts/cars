@@ -7,61 +7,12 @@ import AltContainer from 'alt/AltContainer'
 import CarSelectorStore from '../../store/cars.carselectorstore'
 
 import CarSelectorActions from '../../action/cars.carselectoraction'
-import RequestSelectorActions from '../../action/cars.requestaction.js'
+import RequestSelectorActions from '../../action/cars.requestaction'
 import RequestHeader from './cars.requestheader'
-import CarSelector from './cars.carselector'
-import Cache from '../../common/cache.js'
+import CarSection from './cars.carsection'
+import Cache from '../../common/cache'
 
-class CarSection extends React.Component {
-    constructor() {
-        super();
-    }
-    close() {
-        CarSelectorActions.showModel(false);
-    }
-
-    open() {
-        CarSelectorActions.showModel(true);
-    }
-
-    getCarInfo() {
-        return (
-            <div>
-                <div>{this.props.car.brand}</div>
-                <div>{this.props.car.volume}</div>
-                <div>{this.props.car.year}</div>
-            </div>
-        )
-    }
-
-    render() {
-        let carinfo = this.getCarInfo();
-        let carselector =(!_.isEmpty(this.props.car))?(<span>{carinfo}<Button onClick={this.open.bind(this)}>重选</Button></span>):(<Button onClick={this.open.bind(this)}>选择车型</Button>);
-
-            return (
-                <div>{carselector}
-                    <Modal show={this.props.showModal} onHide={this.close.bind(this)} enforceFocus={true} autoFocus={true}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>选择车型</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <AltContainer store={CarSelectorStore}>
-                                <CarSelector/>
-                            </AltContainer>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button onClick={this.hideModal}>Close</Button>
-                        </Modal.Footer>
-                    </Modal>
-                </div>
-            )
-
-
-    }
-}
-
-
-class FirstStepBody extends React.Component {
+class CarSelectorBody extends React.Component {
 
 
     constructor() {
@@ -159,16 +110,16 @@ class FirstStepBody extends React.Component {
     }
 }
 
-class FirstStep extends React.Component {
+class CarSelectorRequest extends React.Component {
     render() {
         return (
             <div className="request-content">
                 <RequestHeader/>
-                <FirstStepBody/>
+                <CarSelectorBody/>
 
             </div>
         )
     }
 }
 
-export default FirstStep;
+export default CarSelectorRequest;

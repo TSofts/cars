@@ -9,8 +9,8 @@ import AltContainer from 'alt/AltContainer'
 
 import RequestStore from '../../store/cars.requeststore.js'
 
-import FirstRequest from './cars.firstrequest'
-import SecondRequest from './cars.secondrequest'
+import FirstRequest from './cars.carselectorrequest.js'
+import SecondRequest from './cars.maintenancerequest.js'
 import ThirdRequest from './cars.thirdrequest'
 
 
