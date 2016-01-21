@@ -11,7 +11,7 @@ import RequestStore from '../../store/cars.requeststore.js'
 
 import FirstRequest from './cars.carselectorrequest.js'
 import SecondRequest from './cars.maintenancerequest.js'
-import ThirdRequest from './cars.thirdrequest'
+import ThirdRequest from './cars.otherrequest.js'
 
 
 class SucceedRequest extends React.Component {

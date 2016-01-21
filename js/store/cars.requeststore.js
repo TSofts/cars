@@ -39,14 +39,10 @@ class RequestSelectorStore {
     }
 
     handleSucceedPublish(obj){
-        console.debug("success store");
-
-        console.debug(obj);
         this.step = 5;
     }
 
     handleFaildPublish(obj) {
-        console.debug("fail store");
         this.step = 6;
     }
 

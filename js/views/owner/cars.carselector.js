@@ -6,6 +6,7 @@ import AltContainer from 'alt/AltContainer'
 import BrandStore from '../../store/cars.brandstore'
 import Cars from '../../common/cars'
 import CarSelectorActions from '../../action/cars.carselectoraction'
+import RequestActions from '../../action/cars.requestaction'
 
 class CarBrand extends React.Component {
     constructor() {
@@ -123,6 +124,7 @@ class YearSelector extends React.Component {
     select(y) {
         CarSelectorActions.setYear(y);
         CarSelectorActions.showModel(false);
+        RequestActions.resetRequest();
     }
 
     render () {

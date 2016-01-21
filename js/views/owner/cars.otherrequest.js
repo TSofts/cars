@@ -1,13 +1,13 @@
 /**
  * Created by shawn on 16-1-4.
  */
-import { Modal,Button,Input,Grid,Row,Col } from 'react-bootstrap'
+import { Modal,Button,Input } from 'react-bootstrap'
 import RequestHeader from './cars.requestheader'
 import RequestActions from '../../action/cars.requestaction'
 import RequestStore from '../../store/cars.requeststore'
 
 
-class ThirdStep extends React.Component {
+class OtherSetting extends React.Component {
     publish(){
         let mm = {
             car:"Audi"
@@ -25,4 +25,4 @@ class ThirdStep extends React.Component {
     }
 }
 
-export default ThirdStep;
+export default OtherSetting;
