@@ -3,6 +3,7 @@
  */
 'use strict';
 import {Input,ButtonInput,Grid,Row,Col,Fade,Well,Label} from 'react-bootstrap'
+import { Link }  from 'react-router'
 
 class Email extends React.Component {
     constructor() {
@@ -172,6 +173,9 @@ class ResetPassword extends React.Component {
     render() {
         return (
             <Grid className="account-reset">
+                <div className="account-nav">
+                    <Link to="/">首页</Link> > 重置密码
+                </div>
                 <span className="title">找回密码</span>
                 <Row>
                     <Col md={6} xs={12}>

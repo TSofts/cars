@@ -224,6 +224,11 @@ class AccountRegistry extends React.Component {
         return (
             <Grid className="account-registry">
                 <Row>
+                    <div className="account-nav">
+                        <Link to="/">首页</Link> > 用户注册
+                    </div>
+                </Row>
+                <Row>
                     <Col md={6} xs={12}>
                         <Registry/>
                     </Col>
