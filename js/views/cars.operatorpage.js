@@ -23,7 +23,7 @@ class FeedComponent extends React.Component {
     }
 
     getCarDescription() {
-        var des = " " + Cars.brands[this.props.item.car.brand].name + " " + this.props.item.car.series + " " + this.props.item.car.displacement + " " + this.props.item.car.year;
+        var des = " " + this.props.item.car.brand.name + " " + this.props.item.car.series + " " + this.props.item.car.displacement + " " + this.props.item.car.year;
         return (
             <span className="feed-title">
                 <Image className="feed-car-brand"
